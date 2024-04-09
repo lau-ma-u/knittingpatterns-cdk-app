@@ -1,12 +1,11 @@
 from aws_cdk import (
     Stack,
     aws_dynamodb as dynamodb_,
-    aws_lambda as lambda_,
+    aws_s3 as s3
 )
 from constructs import Construct
-import aws_cdk.aws_s3 as s3
 import aws_cdk as cdk
-import os.path
+
 
 TABLE_NAME = "patterns_table"
 

@@ -1,13 +1,8 @@
 from aws_cdk import (
     Stack,
-    aws_dynamodb as dynamodb_,
-    aws_lambda as lambda_,
     aws_apigateway as apigw_,
-    aws_s3 as s3,
-
 )
 from constructs import Construct
-import os.path
 
 class KpApiStack(Stack):
 

@@ -5,8 +5,6 @@ from aws_cdk import (
     aws_apigateway as apigw_
 )
 from constructs import Construct
-import aws_cdk.aws_s3 as s3
-import aws_cdk as cdk
 import os.path
 
 dirname = os.path.dirname(__file__)

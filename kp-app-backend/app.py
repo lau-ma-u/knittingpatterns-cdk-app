@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-import os
-
 import aws_cdk as cdk
 
 from kp_app_backend.stacks.KpDataStack import KpDataStack

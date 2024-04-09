@@ -16,12 +16,15 @@ def handler(event, context):
     if event["body"]:
         item = json.loads(event["body"])
         logging.info(f"## Received payload: {item}")
-        year = str(item["year"])
         title = str(item["title"])
-        id = str(item["id"])
+        yarn = str(item["yarn"])
+        amount = str(item["amount"])
+        needle_size = str(item["needle_size"])
+
+        # id = str(item["id"])
         dynamodb_client.put_item(
             TableName=table,
-            Item={"year": {"N": year}, "title": {"S": title}, "id": {"S": id}},
+            Item={"title": {"S": title}, "yarn": {"S": yarn}, "amount": {"S": amount}, "needle_size": {"S": needle_size}, "id": {"S": str(uuid.uuid4())}},
         )
         message = "Successfully inserted data!"
         return {
@@ -31,7 +34,7 @@ def handler(event, context):
         }
     else:
         logging.info("## Received request without a payload")
-        dynamodb_client.put_item(
+        """ dynamodb_client.put_item(
             TableName=table,
             Item={
                 "year": {"N": "2012"},
@@ -39,7 +42,7 @@ def handler(event, context):
                 "id": {"S": str(uuid.uuid4())},
             },
         )
-        message = "Successfully inserted data!"
+        message = "Successfully inserted data!" """
         return {
             "statusCode": 200,
             "headers": {"Content-Type": "application/json"},

@@ -12,7 +12,7 @@ class KpApiStack(Stack):
         base_api = apigw_.RestApi(self, "PatternsApi", rest_api_name="PatternsApi")
         
         kp_entity = base_api.root.add_resource(
-            'example',
+            'patterns',
             default_cors_preflight_options=apigw_.CorsOptions(
                 allow_methods=apigw_.Cors.ALL_METHODS,
                 allow_origins=apigw_.Cors.ALL_ORIGINS)
@@ -20,6 +20,18 @@ class KpApiStack(Stack):
 
         kp_entity.add_method(
             'GET', integration,
+            method_responses=[
+                apigw_.MethodResponse(
+                    status_code="200",
+                    response_parameters={
+                        'method.response.header.Access-Control-Allow-Origin': True
+                    }
+                )
+            ]
+        )
+
+        kp_entity.add_method(
+            'POST', integration,
             method_responses=[
                 apigw_.MethodResponse(
                     status_code="200",

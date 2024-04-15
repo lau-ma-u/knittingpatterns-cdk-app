@@ -25,8 +25,9 @@ class KpLambdasStack(Stack):
             
         )
         
-        # grant permission to lambda to write to patterns table
+        # Grant permission to lambda to write to patterns table
         table.grant_write_data(api_handler)
         api_handler.add_environment("TABLE_NAME", table.table_name)
 
+        # Create Lambda integration
         self.lambda_integration = apigw_.LambdaIntegration(api_handler)
